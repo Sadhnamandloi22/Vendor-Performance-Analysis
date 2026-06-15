@@ -1,0 +1,27 @@
+2026-05-22 10:22:30,009 - INFO - ingestingbegin_inventory.csv in db
+2026-05-22 10:22:38,091 - INFO - ingestingend_inventory.csv in db
+2026-05-22 10:22:52,919 - INFO - ingestingpurchases.csv in db
+2026-05-22 10:28:47,587 - INFO - ingestingpurchase_prices.csv in db
+2026-05-22 10:29:38,644 - INFO - ingestingsales.csv in db
+2026-05-22 11:46:25,905 - INFO - ingestingvendor_invoice.csv in db
+2026-05-22 11:46:35,093 - INFO - -------------------Ingestion Complete-------------------
+2026-05-22 11:46:35,093 - INFO - 
+Total Time Taken :84.08854635159175 minutes
+2026-06-11 19:42:23,641 - INFO - ingestingbegin_inventory.csv in db
+2026-06-11 19:42:33,240 - INFO - ingestingend_inventory.csv in db
+2026-06-11 19:42:47,519 - INFO - ingestingpurchases.csv in db
+2026-06-11 19:50:25,698 - INFO - ingestingpurchase_prices.csv in db
+2026-06-11 19:51:16,181 - INFO - ingestingsales.csv in db
+2026-06-12 09:56:39,432 - INFO - ingestingvendor_invoice.csv in db
+2026-06-12 09:56:47,910 - INFO - -------------------Ingestion Complete-------------------
+2026-06-12 09:56:47,911 - INFO - 
+Total Time Taken :854.4092069625855 minutes
+2026-06-12 09:57:20,491 - INFO - ingestingbegin_inventory.csv in db
+2026-06-12 09:58:05,659 - INFO - ingestingend_inventory.csv in db
+2026-06-12 09:58:53,736 - INFO - ingestingpurchases.csv in db
+2026-06-12 10:05:31,827 - INFO - ingestingpurchase_prices.csv in db
+2026-06-12 10:06:19,548 - INFO - ingestingsales.csv in db
+2026-06-12 12:09:16,694 - INFO - ingestingvendor_invoice.csv in db
+2026-06-12 12:09:33,986 - INFO - -------------------Ingestion Complete-------------------
+2026-06-12 12:09:33,987 - INFO - 
+Total Time Taken :132.25659858385723 minutes

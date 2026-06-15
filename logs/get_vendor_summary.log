@@ -1,0 +1,60 @@
+2026-05-22 11:46:38,738 - INFO - Creating Vendor Summary Table.....
+2026-05-22 11:48:19,271 - INFO -    VendorNumber                   VendorName  Brand              Description  ...  TotalSalesDollars  TotalSalesPrice TotalExciseTax  FreightCost
+0          1128  BROWN-FORMAN CORP             1233  Jack Daniels No 7 Black  ...       5.101920e+06        672819.31      260999.20     68601.68
+1          4425        MARTIGNETTI COMPANIES   3405    Tito's Handmade Vodka  ...       4.819073e+06        561512.37      294438.66    144929.24
+2         17035  PERNOD RICARD USA             8068         Absolut 80 Proof  ...       4.538121e+06        461140.15      343854.07    123780.22
+3          3960  DIAGEO NORTH AMERICA INC      4261   Capt Morgan Spiced Rum  ...       4.475973e+06        420050.01      368242.80    257032.07
+4          3960  DIAGEO NORTH AMERICA INC      3545          Ketel One Vodka  ...       4.223108e+06        545778.28      249587.83    257032.07
+
+[5 rows x 14 columns]
+2026-05-22 11:48:19,300 - INFO - Cleaning Data.....
+2026-05-22 11:48:19,334 - INFO -    VendorNumber                VendorName  Brand              Description  ...  GrossProfit  ProfitMargin  StockTurnover  SalesPurchaseRatio
+0          1128         BROWN-FORMAN CORP   1233  Jack Daniels No 7 Black  ...   1290667.91         25.30           0.98                1.34
+1          4425     MARTIGNETTI COMPANIES   3405    Tito's Handmade Vodka  ...   1015032.27         21.06           0.98                1.27
+2         17035         PERNOD RICARD USA   8068         Absolut 80 Proof  ...   1119816.92         24.68           1.00                1.33
+3          3960  DIAGEO NORTH AMERICA INC   4261   Capt Morgan Spiced Rum  ...   1214774.94         27.14           0.99                1.37
+4          3960  DIAGEO NORTH AMERICA INC   3545          Ketel One Vodka  ...   1199901.61         28.41           0.98                1.40
+
+[5 rows x 18 columns]
+2026-05-22 11:48:19,359 - INFO - Ingesting data.....
+2026-05-22 11:48:20,657 - INFO - Completed in 101.91874170303345 seconds
+2026-05-22 11:48:21,747 - INFO - Creating Vendor Summary Table.....
+2026-05-22 11:49:14,179 - INFO -    VendorNumber                   VendorName  Brand              Description  ...  TotalSalesDollars  TotalSalesPrice TotalExciseTax  FreightCost
+0          1128  BROWN-FORMAN CORP             1233  Jack Daniels No 7 Black  ...       5.101920e+06        672819.31      260999.20     68601.68
+1          4425        MARTIGNETTI COMPANIES   3405    Tito's Handmade Vodka  ...       4.819073e+06        561512.37      294438.66    144929.24
+2         17035  PERNOD RICARD USA             8068         Absolut 80 Proof  ...       4.538121e+06        461140.15      343854.07    123780.22
+3          3960  DIAGEO NORTH AMERICA INC      4261   Capt Morgan Spiced Rum  ...       4.475973e+06        420050.01      368242.80    257032.07
+4          3960  DIAGEO NORTH AMERICA INC      3545          Ketel One Vodka  ...       4.223108e+06        545778.28      249587.83    257032.07
+
+[5 rows x 14 columns]
+2026-05-22 11:49:14,208 - INFO - Cleaning Data.....
+2026-05-22 11:49:14,237 - INFO -    VendorNumber                VendorName  Brand              Description  ...  GrossProfit  ProfitMargin  StockTurnover  SalesPurchaseRatio
+0          1128         BROWN-FORMAN CORP   1233  Jack Daniels No 7 Black  ...   1290667.91         25.30           0.98                1.34
+1          4425     MARTIGNETTI COMPANIES   3405    Tito's Handmade Vodka  ...   1015032.27         21.06           0.98                1.27
+2         17035         PERNOD RICARD USA   8068         Absolut 80 Proof  ...   1119816.92         24.68           1.00                1.33
+3          3960  DIAGEO NORTH AMERICA INC   4261   Capt Morgan Spiced Rum  ...   1214774.94         27.14           0.99                1.37
+4          3960  DIAGEO NORTH AMERICA INC   3545          Ketel One Vodka  ...   1199901.61         28.41           0.98                1.40
+
+[5 rows x 18 columns]
+2026-05-22 11:49:14,267 - INFO - Ingesting data.....
+2026-05-22 11:49:15,570 - INFO - Completed in 53.822871923446655 seconds
+2026-06-11 19:41:16,888 - INFO - Creating Vendor Summary Table.....
+2026-06-11 19:42:18,785 - INFO -    VendorNumber                   VendorName  Brand              Description  ...  TotalSalesDollars  TotalSalesPrice TotalExciseTax  FreightCost
+0          1128  BROWN-FORMAN CORP             1233  Jack Daniels No 7 Black  ...       5.101920e+06        672819.31      260999.20     68601.68
+1          4425        MARTIGNETTI COMPANIES   3405    Tito's Handmade Vodka  ...       4.819073e+06        561512.37      294438.66    144929.24
+2         17035  PERNOD RICARD USA             8068         Absolut 80 Proof  ...       4.538121e+06        461140.15      343854.07    123780.22
+3          3960  DIAGEO NORTH AMERICA INC      4261   Capt Morgan Spiced Rum  ...       4.475973e+06        420050.01      368242.80    257032.07
+4          3960  DIAGEO NORTH AMERICA INC      3545          Ketel One Vodka  ...       4.223108e+06        545778.28      249587.83    257032.07
+
+[5 rows x 14 columns]
+2026-06-11 19:42:18,809 - INFO - Cleaning Data.....
+2026-06-11 19:42:18,827 - INFO -    VendorNumber                VendorName  Brand              Description  ...  GrossProfit  ProfitMargin  StockTurnover  SalesPurchaseRatio
+0          1128         BROWN-FORMAN CORP   1233  Jack Daniels No 7 Black  ...   1290667.91         25.30           0.98                1.34
+1          4425     MARTIGNETTI COMPANIES   3405    Tito's Handmade Vodka  ...   1015032.27         21.06           0.98                1.27
+2         17035         PERNOD RICARD USA   8068         Absolut 80 Proof  ...   1119816.92         24.68           1.00                1.33
+3          3960  DIAGEO NORTH AMERICA INC   4261   Capt Morgan Spiced Rum  ...   1214774.94         27.14           0.99                1.37
+4          3960  DIAGEO NORTH AMERICA INC   3545          Ketel One Vodka  ...   1199901.61         28.41           0.98                1.40
+
+[5 rows x 18 columns]
+2026-06-11 19:42:18,833 - INFO - Ingesting data.....
+2026-06-11 19:42:22,164 - INFO - Completed in 65.27645492553711 seconds
