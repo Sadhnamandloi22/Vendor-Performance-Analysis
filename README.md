@@ -10,23 +10,23 @@
 <img width="1282" height="725" alt="eXECUTIVE OVERVIEW" src="https://github.com/user-attachments/assets/9041c36c-ddc3-407c-96f7-32abc6af26f0" />
 
 
-
+---
 
 <img width="1281" height="712" alt="VendorPerformance" src="https://github.com/user-attachments/assets/2c2ada70-078d-4245-8f23-3b3c7ec62324" />
 
 
-
+---
 
 
 <img width="1327" height="752" alt="BrandPerformance" src="https://github.com/user-attachments/assets/1e94034e-c1ff-49a3-9aa7-7cfca0bf772e" />
 
 
-
+---
 
 
 <img width="1401" height="732" alt="ProfitabilityDriver" src="https://github.com/user-attachments/assets/98c22250-279b-41a3-b001-b90d8dfd03e5" />
 
-
+---
 
 
 <img width="1285" height="717" alt="OperationAndCashFlow" src="https://github.com/user-attachments/assets/6565c266-db61-4130-9b09-dc1a3bf607f3" />
@@ -260,7 +260,8 @@ jupyter notebook vendor_performance_analysis.ipynb
 
 | Page | Preview |
 |---|---|
-| Executive Overview | `screenshots/page1_overview.png` |
+| Executive Overview | <img width="1282" height="725" alt="eXECUTIVE OVERVIEW" src="https://github.com/user-attachments/assets/03e73115-188d-4d9e-98e0-5edf897f3d6a" />
+ |
 | Vendor Performance (Pareto) | `screenshots/page2_vendor_performance.png` |
 | Brand Opportunities | `screenshots/page3_brand_opportunities.png` |
 | Profitability Deep Dive | `screenshots/page4_profitability.png` |
@@ -330,14 +331,6 @@ vendor-performance-analysis/
 
 ---
 
-## 👤 Author
-
-**[Your Name]**
-Data Analyst | Python · SQL · Power BI
-
-- 🔗 LinkedIn: [your-linkedin-url]
-- 💻 GitHub: [your-github-url]
-- 📧 Email: [your-email]
 
 ---
 
