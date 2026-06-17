@@ -126,7 +126,11 @@ Entity Relationship Diagram (Model View)
 
 Join Keys
 
-RelationshipKeyNotespurchases ↔ purchase_pricesBrandPulls list price and volume per brand into the purchase summarypurchases ↔ vendor_invoiceVendorNumberLinks purchase orders to invoice-level freight costsales ↔ purchases / purchase_pricesBrand, VendorNo = VendorNumberNote the column name mismatch — sales uses VendorNo, every other table uses VendorNumberbegin_inventory / end_inventory ↔ all othersBrand, StoreNot currently joined into the summary table — available for inventory-aging extensions
+RelationshipKeyNotes
+purchases ↔ purchase_prices BrandPulls list price and volume per brand into the purchase 
+summarypurchases ↔ vendor_invoice VendorNumberLinks purchase orders to invoice-level 
+freight costsales ↔ purchases / purchase_pricesBrand, 
+VendorNo = VendorNumberNote the column name mismatch — sales uses VendorNo, every other table uses VendorNumberbegin_inventory / end_inventory ↔ all othersBrand, StoreNot currently joined into the summary table — available for inventory-aging extensions
 
 vendor_sales_summary — Engineered Columns
 
@@ -286,8 +290,6 @@ jupyter notebook vendor_performance_analysis.ipynb
 
 ## 🖼️ Screenshots
 
-> _Add report screenshots here to give recruiters an instant visual preview —
-> this section significantly increases engagement on your repo._
 
 | Page | Preview |
 |---|---|
@@ -297,12 +299,7 @@ jupyter notebook vendor_performance_analysis.ipynb
 | Profitability Deep Dive |   <img width="1401" height="732" alt="ProfitabilityDriver" src="https://github.com/user-attachments/assets/75d32915-a97b-466c-bd87-2e651adac2e8" />|
 | Operations |  <img width="1285" height="717" alt="OperationAndCashFlow" src="https://github.com/user-attachments/assets/a15091e2-e68c-4f12-a516-878ba65b8edb" />|
 
-<!--
-Tip: Use Power BI Desktop's "Export to image" or a screen capture tool, save the
-files into a `/screenshots` folder in this repo, then update the image paths above
-to embed them directly, e.g.:
-![Executive Overview](screenshots/page1_overview.png)
--->
+
 
 ---
 
