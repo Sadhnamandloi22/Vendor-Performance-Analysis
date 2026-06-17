@@ -10,9 +10,11 @@
 <img width="1282" height="725" alt="eXECUTIVE OVERVIEW" src="https://github.com/user-attachments/assets/9041c36c-ddc3-407c-96f7-32abc6af26f0" />
 
 
+
 **VENDOR  PERFORMANCE**
 
 <img width="1281" height="712" alt="VendorPerformance" src="https://github.com/user-attachments/assets/2c2ada70-078d-4245-8f23-3b3c7ec62324" />
+
 
 
 **PROFITABILITY DRIVERS**
@@ -20,9 +22,11 @@
 <img width="1327" height="752" alt="BrandPerformance" src="https://github.com/user-attachments/assets/1e94034e-c1ff-49a3-9aa7-7cfca0bf772e" />
 
 
+
 **COST AND CASH FLOW**
 
 <img width="1401" height="732" alt="ProfitabilityDriver" src="https://github.com/user-attachments/assets/98c22250-279b-41a3-b001-b90d8dfd03e5" />
+
 
 
 **UNDERSTAND WHAT DRIVE PROFIT AND PERFORMANCE**
