@@ -119,80 +119,10 @@ The raw tables relate to one another through VendorNumber/VendorNo and
 Brand. get_vendor_summary.py joins these into the single
 vendor_sales_summary table that powers the analysis and Power BI report.
 
-Entity Relationship Diagram
+Entity Relationship Diagram (Model View)
 
-┌───────────────────────┐        ┌───────────────────────┐
-│   purchase_prices       │        │     vendor_invoice      │
-├───────────────────────┤        ├───────────────────────┤
-│ Brand            (PK)  │        │ VendorNumber            │
-│ Description             │        │ VendorName               │
-│ Price                   │        │ InvoiceDate              │
-│ Size                    │        │ PONumber                 │
-│ Volume                  │        │ PODate                   │
-│ Classification          │        │ PayDate                  │
-│ PurchasePrice           │        │ Quantity                 │
-│ VendorNumber             │        │ Dollars                  │
-│ VendorName               │        │ Freight                  │
-└──────────┬─────────────┘        │ Approval                 │
-            │ Brand                  └──────────┬──────────────┘
-            │                                      │ VendorNumber
-            ▼                                      ▼
-┌───────────────────────┐        ┌───────────────────────┐
-│      purchases          │        │   vendor_sales_summary   │ ◄── derived /
-├───────────────────────┤        ├───────────────────────┤     aggregated
-│ InventoryId              │        │ VendorNumber              │
-│ Store                    │───────▶│ VendorName                │
-│ Brand                    │ join  │ Brand                     │
-│ Description               │ on   │ Description                │
-│ Size                     │ Brand │ PurchasePrice               │
-│ VendorNumber              │       │ ActualPrice                 │
-│ VendorName                │       │ Volume                      │
-│ PONumber                  │       │ TotalPurchaseQuantity        │
-│ PODate                    │       │ TotalPurchaseDollars          │
-│ ReceivingDate              │       │ TotalSalesQuantity              │
-│ InvoiceDate                │       │ TotalSalesDollars                │
-│ PayDate                    │       │ TotalSalesPrice                   │
-│ PurchasePrice               │       │ TotalExciseTax                     │
-│ Quantity                    │       │ FreightCost                         │
-│ Dollars                      │       │ GrossProfit          (engineered)    │
-│ Classification                │       │ ProfitMargin         (engineered)    │
-└──────────┬───────────────┘       │ StockTurnover        (engineered)    │
-            │ Brand                   │ SalesPurchaseRatio   (engineered)    │
-            ▼                          └───────────────────────────────────┘
-┌───────────────────────┐
-│         sales            │
-├───────────────────────┤
-│ InventoryId               │
-│ Store                     │
-│ Brand                     │
-│ Description                │
-│ Size                       │
-│ SalesQuantity                │
-│ SalesDollars                  │
-│ SalesPrice                     │
-│ SalesDate                       │
-│ Volume                           │
-│ Classification                    │
-│ ExciseTax                          │
-│ VendorNo            (→ VendorNumber)│
-│ VendorName                          │
-└───────────────────────────────────┘
+<img width="1320" height="732" alt="image" src="https://github.com/user-attachments/assets/676e7d07-e2ea-405c-9be0-3b012c35718d" />
 
-┌───────────────────────┐        ┌───────────────────────┐
-│   begin_inventory        │        │     end_inventory        │
-├───────────────────────┤        ├───────────────────────┤
-│ InventoryId    (PK)       │        │ InventoryId    (PK)       │
-│ Store                      │        │ Store                      │
-│ City                        │        │ City                        │
-│ Brand                        │        │ Brand                        │
-│ Description                    │        │ Description                    │
-│ Size                              │        │ Size                              │
-│ onHand                              │        │ onHand                              │
-│ Price                                │        │ Price                                │
-│ startDate                             │        │ endDate                              │
-└───────────────────────────────┘        └───────────────────────────────┘
-   (not yet joined into vendor_sales_summary — reserved for future
-    inventory-aging analysis, see Future Scope)
 
 Join Keys
 
