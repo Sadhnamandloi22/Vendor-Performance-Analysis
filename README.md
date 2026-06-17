@@ -1,17 +1,32 @@
-📊 Vendor Performance Analysis
+# 📊 Vendor Performance Analysis
 
-An end-to-end data analytics project that ingests raw retail inventory and sales data into SQL Server, analyzes vendor and brand profitability with Python, and visualizes the results in an interactive Power BI dashboard.
+> An end-to-end data analytics project that ingests raw retail inventory and sales
+> data into SQL Server, analyzes vendor and brand profitability with Python, and
+> visualizes the results in an interactive Power BI dashboard.
 
 
-<img width="1332" height="742" alt="Executive " src="https://github.com/user-attachments/assets/1ddf8d90-1adb-4664-8133-09fad8f7f91e" />
-<img width="1281" height="712" alt="VendorPerformance" src="https://github.com/user-attachments/assets/3c9f6b2c-73bc-435f-b855-cbcc56313e8b" />
-<img width="1327" height="752" alt="BrandPerformance" src="https://github.com/user-attachments/assets/e42e0876-e6e8-489b-abef-91914175ddf1" />
-<img width="1401" height="732" alt="ProfitabilityDriver" src="https://github.com/user-attachments/assets/16826d29-99bd-49c9-93a7-580498d0483d" />
-<img width="1285" height="717" alt="OperationAndCashFlow" src="https://github.com/user-attachments/assets/d395323e-9378-423a-b871-e9f640a29295" />
+EXECUTIVE OVERVIEW
+<img width="1332" height="742" alt="Executive " src="https://github.com/user-attachments/assets/aa3f3377-1c6f-41f1-b584-09b4dca910fb" />
+
+VENDOR  PERFORMANCE
+<img width="1281" height="712" alt="VendorPerformance" src="https://github.com/user-attachments/assets/2c2ada70-078d-4245-8f23-3b3c7ec62324" />
+
+PROFITABILITY DRIVERS
+<img width="1327" height="752" alt="BrandPerformance" src="https://github.com/user-attachments/assets/1e94034e-c1ff-49a3-9aa7-7cfca0bf772e" />
+
+COST AND CASH FLOW
+<img width="1401" height="732" alt="ProfitabilityDriver" src="https://github.com/user-attachments/assets/98c22250-279b-41a3-b001-b90d8dfd03e5" />
+
+UNDERSTAND WHAT DRIVE PROFIT AND PERFORMANCE
+<img width="1285" height="717" alt="OperationAndCashFlow" src="https://github.com/user-attachments/assets/6565c266-db61-4130-9b09-dc1a3bf607f3" />
+
+
+
+
 
 ---
 
-📌 Project Overview
+## 📌 Project Overview
 
 Retail and distribution businesses purchase inventory from dozens (sometimes
 hundreds) of vendors — but not every vendor relationship is equally profitable.
@@ -28,7 +43,7 @@ business stakeholders.
 
 ---
 
-✨ Features
+## ✨ Features
 
 - 🔄 **Automated data ingestion** — Python script that loads all raw CSVs into SQL
   Server tables with logging and execution-time tracking
@@ -51,7 +66,7 @@ business stakeholders.
 
 ---
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 
 | Layer | Tools |
 |---|---|
@@ -65,7 +80,7 @@ business stakeholders.
 
 ---
 
-🗂️ Dataset Information
+## 🗂️ Dataset Information
 
 The dataset is a real-world retail inventory and sales dataset (sourced from
 Kaggle) representing transactions for an alcohol/beverage distribution business.
@@ -87,7 +102,7 @@ primary table used for analysis and the Power BI report.
 
 ---
 
-🔄 Project Workflow
+## 🔄 Project Workflow
 
 ```
  1. Raw CSV Files
@@ -135,7 +150,7 @@ primary table used for analysis and the Power BI report.
 
 ---
 
-📈 Results / Key Insights
+## 📈 Results / Key Insights
 
 - **Vendor concentration**: a small number of top vendors account for a
   disproportionately large share of total purchase spend — a classic Pareto (80/20)
@@ -169,7 +184,7 @@ primary table used for analysis and the Power BI report.
 - ODBC Driver 17/18 for SQL Server
 - Power BI Desktop (for viewing/editing the report)
 
-Setup
+### Setup
 
 ```bash
 # 1. Clone the repository
@@ -202,7 +217,7 @@ directory.
 
 ---
 
-▶️ Usage
+## ▶️ Usage
 
 ```bash
 # Step 1 — Ingest raw CSVs into SQL Server
@@ -216,7 +231,7 @@ jupyter notebook Exploratory_data_Analysis.ipynb
 jupyter notebook vendor_performance_analysis.ipynb
 ```
 
-Viewing the Power BI Report
+### Viewing the Power BI Report
 
 1. Open `Vendor_Performance_Report.pbix` in Power BI Desktop
 2. Update the SQL Server connection (Home → Transform Data → Data Source Settings)
@@ -251,7 +266,7 @@ to embed them directly, e.g.:
 
 ## 📁 Folder Structure
 
-
+```
 vendor-performance-analysis/
 │
 ├── data/
@@ -282,22 +297,29 @@ vendor-performance-analysis/
 │
 ├── requirements.txt
 └── README.md
+```
 
+---
 
+## 🚀 Future Scope
 
-🚀 Future Scope
+- [ ] Automate the SQL → Python → Power BI pipeline with a scheduled task or
+      Airflow DAG for periodic refresh
+- [ ] Add monthly trend views by creating lightweight SQL views
+      (`monthly_purchase_summary`, `monthly_sales_summary`) for time-series
+      analysis without importing full raw transaction tables
+- [ ] Build a drillthrough page in Power BI for single-vendor deep dives
+- [ ] Incorporate inventory aging analysis using `begin_inventory`/`end_inventory`
+      to flag slow-moving stock by store
+- [ ] Deploy the Power BI report to Power BI Service with scheduled refresh and
+      row-level security by region/department
+- [ ] Package the ingestion and summary scripts as a CLI tool with configurable
+      connection strings and file paths
+- [ ] Add automated data quality checks (e.g., Great Expectations) before ingestion
 
-- Automate the SQL → Python → Power BI pipeline with a scheduled task or Airflow DAG for periodic refresh
-- Add monthly trend views by creating lightweight SQL views (`monthly_purchase_summary`, `monthly_sales_summary`) for time-series analysis without importing full   raw transaction tables
-- Build a drillthrough page in Power BI for single-vendor deep dives
-- Incorporate inventory aging analysis using `begin_inventory`/`end_inventory` to flag slow-moving stock by store
-- Deploy the Power BI report to Power BI Service with scheduled refresh and row-level security by region/department
-- Package the ingestion and summary scripts as a CLI tool with configurable connection strings and file paths
-- Add automated data quality checks (e.g., Great Expectations) before ingestion
+---
 
-
-
-👤 Author
+## 👤 Author
 
 **[Your Name]**
 Data Analyst | Python · SQL · Power BI
