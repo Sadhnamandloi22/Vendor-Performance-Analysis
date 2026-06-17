@@ -343,23 +343,16 @@ jupyter notebook vendor_performance_analysis.ipynb
 
 ## 🖼️ Screenshots
 
-> _Add report screenshots here to give recruiters an instant visual preview —
-> this section significantly increases engagement on your repo._
+
 
 | Page | Preview |
 |---|---|
-| Executive Overview | `screenshots/page1_overview.png` |
-| Vendor Performance (Pareto) | `screenshots/page2_vendor_performance.png` |
+| Executive Overview |            |
+| Vendor Performance (Pareto) |      |
 | Brand Opportunities | `screenshots/page3_brand_opportunities.png` |
 | Profitability Deep Dive | `screenshots/page4_profitability.png` |
 | Operations | `screenshots/page5_operations.png` |
 
-<!--
-Tip: Use Power BI Desktop's "Export to image" or a screen capture tool, save the
-files into a `/screenshots` folder in this repo, then update the image paths above
-to embed them directly, e.g.:
-![Executive Overview](screenshots/page1_overview.png)
--->
 
 ---
 
