@@ -4,36 +4,12 @@
 > data into SQL Server, analyzes vendor and brand profitability with Python, and
 > visualizes the results in an interactive Power BI dashboard.
 
-
-
-
-<img width="1282" height="725" alt="eXECUTIVE OVERVIEW" src="https://github.com/user-attachments/assets/9041c36c-ddc3-407c-96f7-32abc6af26f0" />
-
-
----
-
-<img width="1281" height="712" alt="VendorPerformance" src="https://github.com/user-attachments/assets/2c2ada70-078d-4245-8f23-3b3c7ec62324" />
-
-
----
-
-
-<img width="1327" height="752" alt="BrandPerformance" src="https://github.com/user-attachments/assets/1e94034e-c1ff-49a3-9aa7-7cfca0bf772e" />
-
-
----
-
-
-<img width="1401" height="732" alt="ProfitabilityDriver" src="https://github.com/user-attachments/assets/98c22250-279b-41a3-b001-b90d8dfd03e5" />
-
----
-
-
-<img width="1285" height="717" alt="OperationAndCashFlow" src="https://github.com/user-attachments/assets/6565c266-db61-4130-9b09-dc1a3bf607f3" />
-
-
-
-
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat&logo=python&logoColor=white)
+![SQL Server](https://img.shields.io/badge/SQL%20Server-Microsoft-CC2927?style=flat&logo=microsoftsqlserver&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?style=flat&logo=powerbi&logoColor=black)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Wrangling-150458?style=flat&logo=pandas&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=flat&logo=jupyter&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat)
 
 ---
 
@@ -113,38 +89,119 @@ primary table used for analysis and the Power BI report.
 
 ---
 
-🧬 Database Schema
+## 🧬 Database Schema
 
-The raw tables relate to one another through VendorNumber/VendorNo and
-Brand. get_vendor_summary.py joins these into the single
-vendor_sales_summary table that powers the analysis and Power BI report.
+The raw tables relate to one another through `VendorNumber`/`VendorNo` and
+`Brand`. `get_vendor_summary.py` joins these into the single
+`vendor_sales_summary` table that powers the analysis and Power BI report.
 
-Entity Relationship Diagram (Model View)
-
-<img width="1320" height="732" alt="image" src="https://github.com/user-attachments/assets/676e7d07-e2ea-405c-9be0-3b012c35718d" />
+### Entity Relationship Diagram
 
 
-Join Keys
-
-RelationshipKeyNotes
-purchases ↔ purchase_prices BrandPulls list price and volume per brand into the purchase 
-summarypurchases ↔ vendor_invoice VendorNumberLinks purchase orders to invoice-level 
-freight costsales ↔ purchases / purchase_pricesBrand, 
-VendorNo = VendorNumberNote the column name mismatch — sales uses VendorNo, every other table uses VendorNumberbegin_inventory / end_inventory ↔ all othersBrand, StoreNot currently joined into the summary table — available for inventory-aging extensions
-
-vendor_sales_summary — Engineered Columns
-
-These four columns are not present in any raw table — they're computed in
-get_vendor_summary.py's clean_data() function after the SQL join:
-
-ColumnFormulaPurposeGrossProfitTotalSalesDollars - TotalPurchaseDollarsAbsolute profit per vendor/brandProfitMargin(GrossProfit / TotalSalesDollars) * 100Profitability as a % of revenueStockTurnoverTotalSalesQuantity / TotalPurchaseQuantityHow efficiently inventory is sold relative to what's boughtSalesPurchaseRatioTotalSalesDollars / TotalPurchaseDollarsRevenue generated per $1 of purchase spend
+<img width="1292" height="727" alt="Relation" src="https://github.com/user-attachments/assets/ba38d8ab-3e4d-42a3-9e0e-61ac20ecc35b" />
 
 
-💡 For the Power BI star schema (dimension/fact table model used in the
-dashboard), see the Power BI Report Build Guide referenced in this project —
-it restructures vendor_sales_summary, vendor_invoice, and two derived monthly
-views (monthly_purchase_summary, monthly_sales_summary) around dim_Vendor,
-dim_Brand, and dim_Date dimension tables.
+```
+┌───────────────────────┐          ┌───────────────────────┐
+│   purchase_prices       │        │     vendor_invoice    │
+├───────────────────────┤          ├───────────────────────┤
+│ Brand            (PK)  │         │ VendorNumber             │
+│ Description             │        │ VendorName               │
+│ Price                   │        │ InvoiceDate              │
+│ Size                    │        │ PONumber                 │
+│ Volume                  │        │ PODate                   │
+│ Classification          │        │ PayDate                  │
+│ PurchasePrice           │        │ Quantity                 │
+│ VendorNumber            │        │ Dollars                  │
+│ VendorName              │        │ Freight                  │
+└──────────┬─────────────┘         │ Approval                 │
+            │ Brand                └──────────┬──────────────┘
+            │                                      │ VendorNumber
+            ▼                                      ▼
+┌───────────────────────┐       ┌───────────────────────┐
+│      purchases        │       │   vendor_sales_summary│ ◄── derived /
+├───────────────────────┤       ├───────────────────────┤     aggregated
+│ InventoryId           │       │ VendorNumber                       │
+│ Store                 │──────▶│ VendorName                        │
+│ Brand                 │ join  │ Brand                              │
+│ Description           │ on    │ Description                        │
+│ Size                  │ Brand │ PurchasePrice                      │
+│ VendorNumber          │       │ ActualPrice                        │
+│ VendorName            │       │ Volume                             │
+│ PONumber              │       │ TotalPurchaseQuantity              │
+│ PODate                │       │ TotalPurchaseDollars               │
+│ ReceivingDate         │       │ TotalSalesQuantity                 │
+│ InvoiceDate           │       │ TotalSalesDollars                  │
+│ PayDate               │       │ TotalSalesPrice                    │
+│ PurchasePrice         │       │ TotalExciseTax                     │
+│ Quantity              │       │ FreightCost                        │
+│ Dollars               │       │ GrossProfit        (engineered)    │
+│ Classification        │       │ ProfitMargin       (engineered)    │
+└──────────┬─────────────┘      │ StockTurnover      (engineered)    │
+            │ Brand             │ SalesPurchaseRatio (engineered)    │
+            ▼                   └───────────────────────────────────┘
+┌───────────────────────┐
+│         sales         │
+├───────────────────────┤
+│ InventoryId            │
+│ Store                  │
+│ Brand                  │
+│ Description            │
+│ Size                   │
+│ SalesQuantity          │
+│ SalesDollars           │
+│ SalesPrice             │
+│ SalesDate              │
+│ Volume                 │
+│ Classification         │
+│ ExciseTax              │
+│ VendorNo(→ VendorNumber)│
+│ VendorName              │
+└──────────────────────────┘
+
+┌───────────────────────┐           ┌───────────────────────┐
+│   begin_inventory     │           │     end_inventory     │
+├───────────────────────┤           ├───────────────────────┤
+│ InventoryId(PK)       │           │ InventoryId    (PK)   │
+│ Store                 │           │ Store                 │
+│ City                  │           │ City                  │
+│ Brand                 │           │ Brand                 │
+│ Description           │           │ Description           │
+│ Size                  │           │ Size                  │
+│ onHand                │           │ onHand                │
+│ Price                 │           │ Price                 │
+│ startDate             │           │ endDate               │
+└───────────────────────┘           └────────────────────────┘
+   (not yet joined into vendor_sales_summary — reserved for future
+    inventory-aging analysis, see Future Scope)
+```
+
+### Join Keys
+
+| Relationship | Key | Notes |
+|---|---|---|
+| `purchases` ↔ `purchase_prices` | `Brand` | Pulls list price and volume per brand into the purchase summary |
+| `purchases` ↔ `vendor_invoice` | `VendorNumber` | Links purchase orders to invoice-level freight cost |
+| `sales` ↔ `purchases` / `purchase_prices` | `Brand`, `VendorNo` = `VendorNumber` | Note the column name mismatch — `sales` uses `VendorNo`, every other table uses `VendorNumber` |
+| `begin_inventory` / `end_inventory` ↔ all others | `Brand`, `Store` | Not currently joined into the summary table — available for inventory-aging extensions |
+
+### `vendor_sales_summary` — Engineered Columns
+
+These four columns are **not** present in any raw table — they're computed in
+`get_vendor_summary.py`'s `clean_data()` function after the SQL join:
+
+| Column | Formula | Purpose |
+|---|---|---|
+| `GrossProfit` | `TotalSalesDollars - TotalPurchaseDollars` | Absolute profit per vendor/brand |
+| `ProfitMargin` | `(GrossProfit / TotalSalesDollars) * 100` | Profitability as a % of revenue |
+| `StockTurnover` | `TotalSalesQuantity / TotalPurchaseQuantity` | How efficiently inventory is sold relative to what's bought |
+| `SalesPurchaseRatio` | `TotalSalesDollars / TotalPurchaseDollars` | Revenue generated per $1 of purchase spend |
+
+> 💡 For the **Power BI star schema** (dimension/fact table model used in the
+> dashboard), see the [Power BI Report Build Guide](#) referenced in this project —
+> it restructures `vendor_sales_summary`, `vendor_invoice`, and two derived monthly
+> views (`monthly_purchase_summary`, `monthly_sales_summary`) around `dim_Vendor`,
+> `dim_Brand`, and `dim_Date` dimension tables.
 
 ---
 
@@ -293,12 +350,11 @@ jupyter notebook vendor_performance_analysis.ipynb
 
 | Page | Preview |
 |---|---|
-| Executive Overview | <img width="1282" height="725" alt="eXECUTIVE OVERVIEW" src="https://github.com/user-attachments/assets/03e73115-188d-4d9e-98e0-5edf897f3d6a" />|
-| Vendor Performance (Pareto) |  <img width="1281" height="712" alt="VendorPerformance" src="https://github.com/user-attachments/assets/408532d3-81c0-4e8e-9d0f-5000c354e6d4" />|
-| Brand Opportunities | <img width="1327" height="752" alt="BrandPerformance" src="https://github.com/user-attachments/assets/65a07fd0-4a2b-4ccc-aab3-b5c722db1c92" />|
-| Profitability Deep Dive |   <img width="1401" height="732" alt="ProfitabilityDriver" src="https://github.com/user-attachments/assets/75d32915-a97b-466c-bd87-2e651adac2e8" />|
-| Operations |  <img width="1285" height="717" alt="OperationAndCashFlow" src="https://github.com/user-attachments/assets/a15091e2-e68c-4f12-a516-878ba65b8edb" />|
-
+| Executive Overview | <img width="1282" height="725" alt="eXECUTIVE OVERVIEW" src="https://github.com/user-attachments/assets/0409c19c-de1c-471c-880e-eec838d5bbfc" />|
+| Vendor Performance (Pareto) | <img width="1281" height="712" alt="VendorPerformance" src="https://github.com/user-attachments/assets/aaa964e9-cfaa-4263-9f1f-ef8c9d6d07a1" />|
+| Brand Opportunities | <img width="1327" height="752" alt="BrandPerformance" src="https://github.com/user-attachments/assets/d0739f47-acec-481e-b52a-fd6a713ed70d" />|
+| Profitability Deep Dive | <img width="1401" height="732" alt="ProfitabilityDriver" src="https://github.com/user-attachments/assets/88129531-18a0-43a8-83a9-7a52ca281e16" />|
+| Operations | <img width="1285" height="717" alt="OperationAndCashFlow" src="https://github.com/user-attachments/assets/43f2f4b9-267f-40f1-9e76-7008f05e44f5" />|
 
 
 ---
