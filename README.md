@@ -113,6 +113,107 @@ primary table used for analysis and the Power BI report.
 
 ---
 
+🧬 Database Schema
+
+The raw tables relate to one another through VendorNumber/VendorNo and
+Brand. get_vendor_summary.py joins these into the single
+vendor_sales_summary table that powers the analysis and Power BI report.
+
+Entity Relationship Diagram
+
+┌───────────────────────┐        ┌───────────────────────┐
+│   purchase_prices       │        │     vendor_invoice      │
+├───────────────────────┤        ├───────────────────────┤
+│ Brand            (PK)  │        │ VendorNumber            │
+│ Description             │        │ VendorName               │
+│ Price                   │        │ InvoiceDate              │
+│ Size                    │        │ PONumber                 │
+│ Volume                  │        │ PODate                   │
+│ Classification          │        │ PayDate                  │
+│ PurchasePrice           │        │ Quantity                 │
+│ VendorNumber             │        │ Dollars                  │
+│ VendorName               │        │ Freight                  │
+└──────────┬─────────────┘        │ Approval                 │
+            │ Brand                  └──────────┬──────────────┘
+            │                                      │ VendorNumber
+            ▼                                      ▼
+┌───────────────────────┐        ┌───────────────────────┐
+│      purchases          │        │   vendor_sales_summary   │ ◄── derived /
+├───────────────────────┤        ├───────────────────────┤     aggregated
+│ InventoryId              │        │ VendorNumber              │
+│ Store                    │───────▶│ VendorName                │
+│ Brand                    │ join  │ Brand                     │
+│ Description               │ on   │ Description                │
+│ Size                     │ Brand │ PurchasePrice               │
+│ VendorNumber              │       │ ActualPrice                 │
+│ VendorName                │       │ Volume                      │
+│ PONumber                  │       │ TotalPurchaseQuantity        │
+│ PODate                    │       │ TotalPurchaseDollars          │
+│ ReceivingDate              │       │ TotalSalesQuantity              │
+│ InvoiceDate                │       │ TotalSalesDollars                │
+│ PayDate                    │       │ TotalSalesPrice                   │
+│ PurchasePrice               │       │ TotalExciseTax                     │
+│ Quantity                    │       │ FreightCost                         │
+│ Dollars                      │       │ GrossProfit          (engineered)    │
+│ Classification                │       │ ProfitMargin         (engineered)    │
+└──────────┬───────────────┘       │ StockTurnover        (engineered)    │
+            │ Brand                   │ SalesPurchaseRatio   (engineered)    │
+            ▼                          └───────────────────────────────────┘
+┌───────────────────────┐
+│         sales            │
+├───────────────────────┤
+│ InventoryId               │
+│ Store                     │
+│ Brand                     │
+│ Description                │
+│ Size                       │
+│ SalesQuantity                │
+│ SalesDollars                  │
+│ SalesPrice                     │
+│ SalesDate                       │
+│ Volume                           │
+│ Classification                    │
+│ ExciseTax                          │
+│ VendorNo            (→ VendorNumber)│
+│ VendorName                          │
+└───────────────────────────────────┘
+
+┌───────────────────────┐        ┌───────────────────────┐
+│   begin_inventory        │        │     end_inventory        │
+├───────────────────────┤        ├───────────────────────┤
+│ InventoryId    (PK)       │        │ InventoryId    (PK)       │
+│ Store                      │        │ Store                      │
+│ City                        │        │ City                        │
+│ Brand                        │        │ Brand                        │
+│ Description                    │        │ Description                    │
+│ Size                              │        │ Size                              │
+│ onHand                              │        │ onHand                              │
+│ Price                                │        │ Price                                │
+│ startDate                             │        │ endDate                              │
+└───────────────────────────────┘        └───────────────────────────────┘
+   (not yet joined into vendor_sales_summary — reserved for future
+    inventory-aging analysis, see Future Scope)
+
+Join Keys
+
+RelationshipKeyNotespurchases ↔ purchase_pricesBrandPulls list price and volume per brand into the purchase summarypurchases ↔ vendor_invoiceVendorNumberLinks purchase orders to invoice-level freight costsales ↔ purchases / purchase_pricesBrand, VendorNo = VendorNumberNote the column name mismatch — sales uses VendorNo, every other table uses VendorNumberbegin_inventory / end_inventory ↔ all othersBrand, StoreNot currently joined into the summary table — available for inventory-aging extensions
+
+vendor_sales_summary — Engineered Columns
+
+These four columns are not present in any raw table — they're computed in
+get_vendor_summary.py's clean_data() function after the SQL join:
+
+ColumnFormulaPurposeGrossProfitTotalSalesDollars - TotalPurchaseDollarsAbsolute profit per vendor/brandProfitMargin(GrossProfit / TotalSalesDollars) * 100Profitability as a % of revenueStockTurnoverTotalSalesQuantity / TotalPurchaseQuantityHow efficiently inventory is sold relative to what's boughtSalesPurchaseRatioTotalSalesDollars / TotalPurchaseDollarsRevenue generated per $1 of purchase spend
+
+
+💡 For the Power BI star schema (dimension/fact table model used in the
+dashboard), see the Power BI Report Build Guide referenced in this project —
+it restructures vendor_sales_summary, vendor_invoice, and two derived monthly
+views (monthly_purchase_summary, monthly_sales_summary) around dim_Vendor,
+dim_Brand, and dim_Date dimension tables.
+
+---
+
 ## 🔄 Project Workflow
 
 ```
