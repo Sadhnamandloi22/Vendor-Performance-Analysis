@@ -260,12 +260,11 @@ jupyter notebook vendor_performance_analysis.ipynb
 
 | Page | Preview |
 |---|---|
-| Executive Overview | <img width="1282" height="725" alt="eXECUTIVE OVERVIEW" src="https://github.com/user-attachments/assets/03e73115-188d-4d9e-98e0-5edf897f3d6a" />
- |
-| Vendor Performance (Pareto) | `screenshots/page2_vendor_performance.png` |
-| Brand Opportunities | `screenshots/page3_brand_opportunities.png` |
-| Profitability Deep Dive | `screenshots/page4_profitability.png` |
-| Operations | `screenshots/page5_operations.png` |
+| Executive Overview | <img width="1282" height="725" alt="eXECUTIVE OVERVIEW" src="https://github.com/user-attachments/assets/03e73115-188d-4d9e-98e0-5edf897f3d6a" />|
+| Vendor Performance (Pareto) |  <img width="1281" height="712" alt="VendorPerformance" src="https://github.com/user-attachments/assets/408532d3-81c0-4e8e-9d0f-5000c354e6d4" />|
+| Brand Opportunities | <img width="1327" height="752" alt="BrandPerformance" src="https://github.com/user-attachments/assets/65a07fd0-4a2b-4ccc-aab3-b5c722db1c92" />|
+| Profitability Deep Dive |   <img width="1401" height="732" alt="ProfitabilityDriver" src="https://github.com/user-attachments/assets/75d32915-a97b-466c-bd87-2e651adac2e8" />|
+| Operations |  <img width="1285" height="717" alt="OperationAndCashFlow" src="https://github.com/user-attachments/assets/a15091e2-e68c-4f12-a516-878ba65b8edb" />|
 
 <!--
 Tip: Use Power BI Desktop's "Export to image" or a screen capture tool, save the
